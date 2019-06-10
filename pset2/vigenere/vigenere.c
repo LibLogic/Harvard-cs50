@@ -35,15 +35,14 @@ int main(int argc, string argv[])
     while (!pt[0] || pt[0] == ' ');
     printf("ciphertext: ");
     // make key repeat to the length of plaintext
-    int shift, base, j = -1;
+    int shift, base, j;
     for (i = 0; i < strlen(pt); i++)
     {
         // only move index of key if current letter
         // of plaintext is a-z or A-Z
         if (isalpha(pt[i]))
         {
-            j++;
-            j = j % strlen(argv[1]);
+            j = i % strlen(argv[1]);
             shift = argv[1][j] < 'a' ? argv[1][j] - 'A' : argv[1][j] - 'a';
         }
         (pt[i] >= 'a' && pt[i] <= 'z') ?
@@ -52,5 +51,6 @@ int main(int argc, string argv[])
         printf("%c", (pt[i] - 'A' + shift) % 26 + 'A') :
         printf("%c", pt[i]);
     }
+
     printf("\n");
 }
