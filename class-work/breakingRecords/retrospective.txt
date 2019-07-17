@@ -1,0 +1,6 @@
+I gave myself 15 minutes for this challenge. Solved it in 13 minutes with a caveat.
+Cliff had to help me because I was returning returning false when no match was
+found and as a result I was inadvertently ending the function early.
+
+Learned about using a hashmap to get time down to On rather than the way I was doing it
+with a nested loop which has On2

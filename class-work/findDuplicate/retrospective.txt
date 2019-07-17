@@ -1,0 +1,9 @@
+I gave myself 15 minute to do this challenge. I actually thought I could do it in less.
+But, again an amatuer mistake. I was assigning my empty object in my for loop and erasing
+it each time through. It took me another 20 minutes to figure that out. So 1/2 hour.
+
+As soon as I moved my empty object assignment outside the loop it worked.
+
+I knew that my object was being overwritten each time through the loop. I should have realized why instantly.
+But I played around doing console.logs and playing around. I guess I just didn't have confidence in my code but I
+had the rest of the code correct from the get go.
