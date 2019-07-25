@@ -1,7 +1,7 @@
 let board = [
-    [-1, -1, 1],
-    [0, 1, -1],
-    [1, 1, -1]
+    [-1, 1, -1],
+    [1, -1, 1],
+    [1, -1, -1]
 ];
 
 function checkBoard(board) {
@@ -16,11 +16,20 @@ function checkBoard(board) {
   }
 
   function checkForWin(board) {
-    // Check Columns for win
-    let col0Total = 0, col1Total = 0, col2Total = 0;
-    for (var i = 0; i < 3; i++) {
-      let rowTotal = 0;
+    let col0Total = 0, col1Total = 0, col2Total = 0, rowTotal = 0;
+    for (var i = 0; i < 3; i++, rowTotal = 0) {
       for (var j = 0; j < 3; j++) {
+
+        // Check rows for win
+        rowTotal += board[i][j];
+        if (rowTotal === -3) {
+            return '"X" Wins horizontally on row ' + (i + 1);
+        }
+        if (rowTotal === 3) {
+            return '"O" Wins horizontally on row ' + (i + 1);
+        }
+
+        // Check columns for win
         if (j === 0 ) {
           col0Total += board[i][j];
         }
@@ -32,19 +41,10 @@ function checkBoard(board) {
         }
 
         if (col0Total === -3 || col1Total === -3 || col2Total === -3) {
-          return '"X" Wins Vertically';
+          return '"X" Wins vertically on row ' + (j + 1);
         }
         if (col0Total === 3 || col1Total === 3 || col2Total === 3) {
-          return '"O" Wins Vertically';
-        }
-
-        // Check rows for win
-        rowTotal += board[i][j];
-        if (rowTotal === -3) {
-            return '"X"Wins Horizontally';
-        }
-        if (rowTotal === 3) {
-            return '"O" Wins Horizontally';
+          return '"O" Wins vertically on row ' + (j + 1);
         }
 
         // Check diagonals for win
@@ -58,6 +58,7 @@ function checkBoard(board) {
         }
       }
     }
+
     if (Math.abs(difference) == 1 && (boardCount[0] + boardCount[1]) == 9 ) {
     return "Tie";
     }
